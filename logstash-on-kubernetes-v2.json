@@ -2387,10 +2387,10 @@
             "uid": "vdMvd744z"
           },
           "exemplar": true,
-          "expr": "irate(logstash_stats_pipeline_plugin_events_out{pod=~'$pod',plugin_type='output'}[$__range])",
+          "expr": "irate(logstash_stats_pipeline_plugin_events_out{pod=~'$pod',pipeline=~\"$pipeline\",plugin_type='output'}[$__range])",
           "instant": false,
           "interval": "",
-          "legendFormat": "{{replica}} {{pipeline}}",
+          "legendFormat": "{{pipeline}} ({{plugin}})",
           "refId": "A"
         },
         {
@@ -2399,7 +2399,7 @@
             "uid": "vdMvd744z"
           },
           "exemplar": true,
-          "expr": "sum by (job) (irate(logstash_stats_pipeline_plugin_events_out{pod=~'$pod',plugin_type='output'}[$__range]))",
+          "expr": "sum by (job) (irate(logstash_stats_pipeline_plugin_events_out{pod=~'$pod',pipeline=~\"$pipeline\",plugin_type='output'}[$__range]))",
           "interval": "",
           "legendFormat": "total",
           "refId": "B"
